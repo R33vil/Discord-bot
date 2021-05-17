@@ -1,0 +1,53 @@
+when creating a new node project navigate to the working folder.
+then type "npm init -y" 
+This is how you start a node.js project. Then Install the Discord 
+packages with....................................................
+"npm i discord.js". 
+Next run and install from CMD....................................
+"npm install dotenv".
+This will allow us to install enviorment variables. Then within the 
+working directory create a folder called "src". This is your usual
+as far as node projects go. Inside the src folder create a file called
+"bot.js". Next in the main working directory create a file called ".env"
+Within .env in all caps type "DISCORDJS_BOT_TOKEN=" next head on over to
+https://discord.com/developers/applications. Create an application their with 
+whatever you deem worthy of a name. Then click you application. Then navigate
+to where it says bot. Finally click to reveal token. A token should look like 
+ODQwMDc0NzI1ODQ5Njk0MjI4.YJS6jg.PlXOSBN3BKOWY4iUy5aDUHisaty. Then head over to 
+you "bot.js" and write "require('dotenv').config();" For the rest of this tutorial
+I will not be physically writing out all the lines of code needed so refer to the 
+"bot.js" to view the source code. it is importaint to note that "env" is a 
+object. Next create a server on your Discord account. It should look like
+"840074725849694278". Copt the ID and go to 0Auth. From their click.....
+"Basic authorization url". Click the URL. Once their type out...........
+"https://discord.com/oauth2/authorize?client_id=840074725849694228&scope=bot".
+Next Click the server that you want to link to. thus far I have this added to
+"bot.js":
+
+require('dotenv').config();
+
+const { Client } = require('discord.js');
+const client = new Client();
+
+client.login(process.env.DISCORDJS_BOT_TOKEN);
+
+Now I can run this by either using terminal or CMD by typing "node ./src/bot.js".
+We can then head over to the "package.json" & add under "scripts".................
+"start": "node ./src/bot.js"......................................................
+Witch will allow us to run the project form CMD/termial with the command..........
+"npm run start"...................................................................
+Doing this replaces the typical run script we were using previous. Witch was......
+"node ./src/bot.js"...............................................................
+For this next bit you are going to have to have "nodemon" installed. Due this by..
+Heading to CMD and typing:........................................................
+"npm i -g nodemon"................................................................
+Nodemon allows you to get a visual on the running node/bot.js. If you prefer not..
+having "nodemon" installed globally you can remove the "-g" from the install command
+we last ran witch is just a argument for nod.js to install globally. Now if we type:
+"nodemon ./src/bot.js"............................................................
+We will get a running visual of our bot node running. And as always CRTL+C to quit.
+Were now going to move onto bigger and better things. Events. We need out bot to...
+well do things... If you would like the long list of possible events. It can be found @:
+"https://discord.js.org/#/docs/main/stable/class/Client"...........................
+We are going to be using the "ready" event. 
+
